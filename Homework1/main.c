@@ -1,10 +1,14 @@
 #include <stdio.h>
 #include <stdlib.h> // для конвертации строки в числовой вид
 #include <locale.h> // язык
+#include <ctype.h>
+#include <math.h>
 
-int CountNum, NumOfArray, sizeArray; // количество элементов, элемент, размер массива
+
+int CountNum, NumOfArray, sizeArray=0; // количество элементов, элемент, размер массива
 char count_number[100]; // количество значений
-char checkArrayDec [1]; // для проверки
+char checkArrayDec[1]; // для проверки
+
 
 int Check_number(char check [])  // для конвертации строки (массива) в числовой вид
 {
@@ -20,21 +24,28 @@ void InputCountNumbers()
     {
         printf("Введите количество вводимых чисел: ");
         CountNum = Check_number(count_number);
-        if (CountNum <= 0) {
-            printf("Введенная строка равна нулю или не является числом.\n");
+        
+        if ((CountNum <= 0) )
+        {
+            printf("Введенная строка равна нулю или не является числом.");
         }
-        else {
+        else
+        {
+            if(CountNum %1 != 0)
+            {
+                printf("Введенная строка равна нулю или не является числом.");
+            }
             break;
+            
         }
     }
     sizeArray = atoi(count_number);
 }
 
-long* InputNumbersOfArray()
+void InputNumbersOfArray(long array[], int size)
 {
     int counter=1;
-    int array [sizeArray];
-    for (int i = 0; i < sizeArray; i++)
+    for (long i = 0; i < sizeArray; i++)
     {
         while(1)
         {
@@ -43,18 +54,18 @@ long* InputNumbersOfArray()
             if (NumOfArray == 0) {
                 printf("Введенная строка не является числом.\n");
             }
-            else {
+            else
+            {
                 array[i]=NumOfArray;
                 counter++;
                 break;
             }
         }
     }
-    return array;
 }
 
 
-long* decimalToBinary(int decimals[], int size)
+long* decimalToBinary(long decimals[], long size)
 {
     long array[100];
     for(long i=0; i<size; i++)
@@ -79,18 +90,17 @@ void PrintArray(long array[], long size)
         printf("%lld ", array[i]);
     }
 }
-int main(void)
+long main(void)
 {
     setlocale(LC_ALL, "Rus");
     InputCountNumbers();
-    long* arrayDec = InputNumbersOfArray();
-    
+    long arrayDec[sizeArray];
+    InputNumbersOfArray(arrayDec, sizeArray);
     printf("Исходное множество чисел ");
     PrintArray(arrayDec,sizeArray);
     printf("\n");
     long* binaries = decimalToBinary(arrayDec, sizeArray);
     PrintArray(binaries,sizeArray);
-    
     return 0;
      
 }
