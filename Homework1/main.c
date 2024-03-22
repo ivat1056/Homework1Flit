@@ -13,7 +13,7 @@ char checkArrayDec[1]; // для проверки
 int Check_number(char check [])  // для конвертации строки (массива) в числовой вид
 {
     int num;
-    fgets(check, sizeof(check), stdin);
+    fgets(check, sizeof(check), stdin);  // исправить
     num = atoi(check);
     return num;
 }
