@@ -10,12 +10,25 @@ char count_number[100]; // количество значений
 char checkArrayDec[1]; // для проверки
 
 
-int Check_number(char check [])  // для конвертации строки (массива) в числовой вид
+int Check_number(char check[]) // для конвертации строки (массива) в числовой вид
 {
     int num;
     fgets(check, sizeof(check), stdin);
+    char *check1 = check;
+    int count = 0;
+    while (*check1++ != 0) {
+        check1++;
+        count++;
+    }
+    for (int i = 0; i < count; i++)
+    {
+        if (isdigit(check[i]) == 0)
+        {
+            return 0;
+        }
+    }
     num = atoi(check);
-    
+
     return num;
 }
  
@@ -32,9 +45,7 @@ void InputCountNumbers()
         }
         else
         {
-            
             break;
-            
         }
     }
     sizeArray = atoi(count_number);
