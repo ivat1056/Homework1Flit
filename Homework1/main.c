@@ -13,8 +13,9 @@ char checkArrayDec[1]; // для проверки
 int Check_number(char check [])  // для конвертации строки (массива) в числовой вид
 {
     int num;
-    fgets(check, sizeof(check), stdin);  // исправить
+    fgets(check, sizeof(check), stdin);
     num = atoi(check);
+    
     return num;
 }
  
@@ -31,10 +32,7 @@ void InputCountNumbers()
         }
         else
         {
-            if(CountNum %1 != 0)
-            {
-                printf("Введенная строка равна нулю или не является числом.");
-            }
+            
             break;
             
         }
