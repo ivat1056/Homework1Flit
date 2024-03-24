@@ -40,7 +40,7 @@ void InputCountNumbers()
         
         if ((CountNum <= 0) )
         {
-            printf("Введенная строка равна нулю или не является числом.\n");
+            printf("Введенная строка равна нулю или не является числом или меньше нуля\n");
         }
         else
         {
@@ -60,7 +60,7 @@ void InputNumbersOfArray(long array[], int size)
             printf("Введите элемент [%d] ",counter);
             NumOfArray = Check_number(checkArrayDec);
             if (NumOfArray <= 0) {
-                printf("Введенная строка равна нулю или не является числом.\n");
+                printf("Введенная строка равна нулю или не является числом или меньше нуля\n");
             }
             else
             {
@@ -71,7 +71,6 @@ void InputNumbersOfArray(long array[], int size)
         }
     }
 }
-
 
 long* decimalToBinary(long decimals[], long size)
 {
