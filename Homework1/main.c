@@ -28,7 +28,6 @@ int Check_number(char check[]) // для конвертации строки (м
         }
     }
     num = atoi(check);
-
     return num;
 }
  
@@ -41,7 +40,7 @@ void InputCountNumbers()
         
         if ((CountNum <= 0) )
         {
-            printf("Введенная строка равна нулю или не является числом.");
+            printf("Введенная строка равна нулю или не является числом.\n");
         }
         else
         {
@@ -60,8 +59,8 @@ void InputNumbersOfArray(long array[], int size)
         {
             printf("Введите элемент [%d] ",counter);
             NumOfArray = Check_number(checkArrayDec);
-            if (NumOfArray == 0) {
-                printf("Введенная строка не является числом.\n");
+            if (NumOfArray <= 0) {
+                printf("Введенная строка равна нулю или не является числом.\n");
             }
             else
             {
@@ -111,5 +110,4 @@ long main(void)
     long* binaries = decimalToBinary(arrayDec, sizeArray);
     PrintArray(binaries,sizeArray);
     return 0;
-     
 }
