@@ -1,9 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h> // для конвертации строки в числовой вид
 #include <locale.h> // язык
-#include <ctype.h>
-#include <math.h>
-
+#include <ctype.h> // для типа является ли символ - числом
 
 int CountNum, NumOfArray, sizeArray=0; // количество элементов, элемент, размер массива
 char count_number[100]; // количество значений
@@ -30,7 +28,7 @@ int Check_number(char check[]) // для конвертации строки (м
     num = atoi(check);
     return num;
 }
- 
+
 void InputCountNumbers()
 {
     while(1)
@@ -52,6 +50,7 @@ void InputCountNumbers()
 
 void InputNumbersOfArray(long array[], int size)
 {
+    int flag;
     int counter=1;
     for (long i = 0; i < sizeArray; i++)
     {
@@ -64,11 +63,34 @@ void InputNumbersOfArray(long array[], int size)
             }
             else
             {
-                array[i]=NumOfArray;
-                counter++;
-                break;
+                if (i!= 0)
+                {
+                    for (int j = 0; j < i; j++)
+                    {
+                        if (array[j] != NumOfArray)
+                        {
+                            flag =0;
+                        }
+                        else
+                        {
+                            printf("Введенный элемент уже есть во множестве \n");
+                            flag = 1;
+                            break;
+                        }
+                    }
+                }
+                else
+                {
+                    break;
+                }
+                if(flag != 1 )
+                {
+                    break;
+                }
             }
         }
+        array[i] = NumOfArray;
+        counter++;
     }
 }
 
